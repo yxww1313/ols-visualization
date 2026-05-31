@@ -5,7 +5,7 @@ import time
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
-# ================== 字体加载（放在 set_page_config 之后） ==================
+# ================== 字体加载 ==================
 font_path = "static/NotoSansCJKsc-Regular.otf"
 try:
     fm.fontManager.addfont(font_path)
