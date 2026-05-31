@@ -4,9 +4,16 @@ import matplotlib.pyplot as plt
 import time
 import matplotlib.pyplot as plt
 
-# 设置 Matplotlib 支持中文字体
-plt.rcParams['font.sans-serif'] = ['Microsoft YaHei', 'SimHei', 'WenQuanYi Micro Hei', 'DejaVu Sans']
-plt.rcParams['axes.unicode_minus'] = False   # 解决负号（-）显示为方块的问题
+# ========== 解决云端中文字体问题 ==========
+# 尝试自动选择可用的中文字体
+font_candidates = ['WenQuanYi Micro Hei', 'Microsoft YaHei', 'SimHei', 'DejaVu Sans']
+available_fonts = [f for f in font_candidates if f in [font.name for font in fm.fontManager.ttflist]]
+if available_fonts:
+    plt.rcParams['font.sans-serif'] = available_fonts
+else:
+    plt.rcParams['font.sans-serif'] = ['DejaVu Sans']  # 回退
+plt.rcParams['axes.unicode_minus'] = False
+
 # ============================================
 # 页面配置与标题
 # ============================================
