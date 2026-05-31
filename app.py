@@ -4,15 +4,9 @@ import matplotlib.pyplot as plt
 import time
 import matplotlib.pyplot as plt
 
-# ========== 解决云端中文字体问题 ==========
-# 尝试自动选择可用的中文字体
-font_candidates = ['WenQuanYi Micro Hei', 'Microsoft YaHei', 'SimHei', 'DejaVu Sans']
-available_fonts = [f for f in font_candidates if f in [font.name for font in fm.fontManager.ttflist]]
-if available_fonts:
-    plt.rcParams['font.sans-serif'] = available_fonts
-else:
-    plt.rcParams['font.sans-serif'] = ['DejaVu Sans']  # 回退
-plt.rcParams['axes.unicode_minus'] = False
+# 直接指定使用开源中文字体 'WenQuanYi Micro Hei'
+plt.rcParams['font.sans-serif'] = ['WenQuanYi Micro Hei']
+plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
 # ============================================
 # 页面配置与标题
