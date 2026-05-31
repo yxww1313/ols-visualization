@@ -4,9 +4,17 @@ import matplotlib.pyplot as plt
 import time
 import matplotlib.pyplot as plt
 
-# 直接指定使用开源中文字体 'WenQuanYi Micro Hei'
-plt.rcParams['font.sans-serif'] = ['WenQuanYi Micro Hei']
-plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
+# ================== 字体加载（放在 set_page_config 之后） ==================
+font_path = "static/NotoSansCJKsc-Regular.otf"
+try:
+    fm.fontManager.addfont(font_path)
+    plt.rcParams['font.family'] = fm.FontProperties(fname=font_path).get_name()
+    plt.rcParams['axes.unicode_minus'] = False
+    
+except FileNotFoundError:
+    st.warning(" 字体文件未找到，图表将使用默认英文字体")
+    plt.rcParams['font.sans-serif'] = ['DejaVu Sans']
+    plt.rcParams['axes.unicode_minus'] = False
 
 # ============================================
 # 页面配置与标题
